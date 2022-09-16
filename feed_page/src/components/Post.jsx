@@ -1,39 +1,29 @@
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
+// import { format} "date-fns"
 
-export function Post(props) {
+export function Post({ author, publishedAt }) {
+  // const publisheDateFormattted = 
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/JoaoDias61.png"
+          <Avatar src={author.avatarUrl}
           />
           <div className={styles.authorInfo}>
-            <strong> João Pedro</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
         <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:30">
-          Publicado há 1h
+          {publisheDateFormattted}
         </time>
       </header>
       <div className={styles.content}>
-        <p>
-          Fala galeraa 👋 Acabei de subir mais um projeto no meu portifa. É um
-        </p>
-        <p>
-          projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto
-          é
-        </p>
-        <p> DoctorCare 🚀</p>
-        <p>
-          <a href=""> 👉 jane.design/doctorcare</a>
-        </p>
-        <p>
-          <a href="">#novoprojeto #nlw #rocketseat</a>
-        </p>
+
       </div>
 
       <form className={styles.commentForm}>
