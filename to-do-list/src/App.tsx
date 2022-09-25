@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import { Todolist } from "./components/Todolist";
+import { InputList } from "./components/InputList";
 import "./global.css";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <div >
       <Header />
-      <Todolist />
+      <InputList />
     </div>
   )
 }
