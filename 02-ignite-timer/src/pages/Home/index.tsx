@@ -14,6 +14,7 @@ import { useContext } from "react";
 
 export function Home() {
 
+    type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
     const { createNewCycle, interruptCurrentCycle, activeCycle } = useContext(CyclesContext)
 
     const newCycleFormValidationSchema = zod.object({
@@ -32,16 +33,17 @@ export function Home() {
     })
     const { handleSubmit, watch, reset } = newCycleForm
 
-    type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
-
-
+    function handleCreateNewCycle(data: NewCycleFormData) {
+        createNewCycle(data)
+        reset()
+    }
 
     const task = watch('task')
     const isSubmitDisabled = !task
 
     return (
         <HomeContainer>
-            <form action="" onSubmit={handleSubmit(createNewCycle)}>
+            <form action="" onSubmit={handleSubmit(handleCreateNewCycle)}>
                 <FormProvider {...newCycleForm}>
                     <NewCycleForm />
                 </FormProvider>
